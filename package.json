@@ -1,0 +1,25 @@
+{
+  "name": "legal-facil",
+  "version": "1.0.0",
+  "description": "Asistente legal que proporciona respuestas claras y modelos de texto para consultas legales y administrativas",
+  "scripts": {
+    "install:client": "cd legal-facil/client && npm install",
+    "install:server": "cd legal-facil/server && npm install",
+    "install:all": "npm run install:client && npm run install:server",
+    "dev:client": "cd legal-facil/client && npm run dev",
+    "dev:server": "cd legal-facil/server && npm run dev",
+    "build:client": "cd legal-facil/client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tu-usuario/legal-facil.git"
+  },
+  "keywords": [
+    "legal",
+    "asistente",
+    "react",
+    "node"
+  ],
+  "author": "",
+  "license": "MIT"
+}

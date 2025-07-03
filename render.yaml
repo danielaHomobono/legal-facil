@@ -1,0 +1,29 @@
+services:
+  # Servicio para el backend
+  - type: web
+    name: legal-facil-api
+    env: node
+    buildCommand: cd legal-facil/server && npm install
+    startCommand: cd legal-facil/server && node index.js
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        fromService:
+          name: legal-facil-frontend
+          type: static
+          property: url
+
+  # Servicio para el frontend
+  - type: static
+    name: legal-facil-frontend
+    buildCommand: cd legal-facil/client && npm install && npm run build
+    staticPublishPath: legal-facil/client/dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: legal-facil-api
+          type: web
+          property: url
