@@ -21,7 +21,12 @@ if (!process.env.OPENAI_API_KEY) {
 }
 
 const app = express();
-app.use(cors());
+// Configurar CORS para permitir solicitudes desde el frontend desplegado
+app.use(cors({
+  origin: [process.env.FRONTEND_URL || 'http://localhost:3000', 'https://legal-facil.vercel.app'],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Ruta de prueba para verificar que el servidor esté funcionando

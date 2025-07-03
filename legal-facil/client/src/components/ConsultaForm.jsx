@@ -24,14 +24,17 @@ export default function ConsultaForm({ onRespuesta }) {
 
     try {
       // Primero verificamos que el servidor esté funcionando
+      // Obtenemos la URL base de la API desde las variables de entorno o usamos localhost por defecto
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+      
       try {
-        await axios.get("http://localhost:4000/api/test");
+        await axios.get(`${API_URL}/api/test`);
       } catch (testErr) {
         throw new Error("No se pudo conectar con el servidor. Verifica que esté en ejecución.");
       }
       
       // Ahora hacemos la consulta principal
-      const res = await axios.post("http://localhost:4000/api/consultar", { pregunta });
+      const res = await axios.post(`${API_URL}/api/consultar`, { pregunta });
       onRespuesta(res.data);
     } catch (err) {
       console.error("Error al consultar:", err);
