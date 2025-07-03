@@ -29,6 +29,17 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Ruta raíz
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'LegalFácil API funcionando correctamente',
+    endpoints: {
+      test: '/api/test',
+      consultar: '/api/consultar'
+    }
+  });
+});
+
 // Ruta de prueba para verificar que el servidor esté funcionando
 app.get('/api/test', (req, res) => {
   res.json({ status: 'ok', message: 'Servidor funcionando correctamente' });
