@@ -24,8 +24,8 @@ export default function ConsultaForm({ onRespuesta }) {
 
     try {
       // Primero verificamos que el servidor esté funcionando
-      // Obtenemos la URL base de la API desde las variables de entorno o usamos localhost por defecto
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+      // URL del backend desplegado en Render
+      const API_URL = import.meta.env.VITE_API_URL || "https://legal-facil.onrender.com";
       
       try {
         await axios.get(`${API_URL}/api/test`);
