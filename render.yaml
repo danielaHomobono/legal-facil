@@ -10,20 +10,13 @@ services:
         sync: false
       - key: PORT
         value: 10000
-      - key: FRONTEND_URL
-        fromService:
-          name: legal-facil-frontend
-          type: static
-          property: url
 
   # Servicio para el frontend
-  - type: static
+  - type: web
     name: legal-facil-frontend
+    env: static
     buildCommand: cd legal-facil/client && npm install && npm run build
     staticPublishPath: legal-facil/client/dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          name: legal-facil-api
-          type: web
-          property: url
+        value: https://legal-facil-api.onrender.com
