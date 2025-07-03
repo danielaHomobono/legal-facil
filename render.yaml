@@ -1,8 +1,9 @@
 services:
-  # Servicio para el backend
+  # Servicio para el backend (plan gratuito)
   - type: web
     name: legal-facil-api
     env: node
+    plan: free
     buildCommand: cd legal-facil/server && npm install
     startCommand: cd legal-facil/server && node index.js
     envVars:
@@ -11,10 +12,11 @@ services:
       - key: PORT
         value: 10000
 
-  # Servicio para el frontend
+  # Servicio para el frontend (plan gratuito)
   - type: web
     name: legal-facil-frontend
     env: static
+    plan: free
     buildCommand: cd legal-facil/client && npm install && npm run build
     staticPublishPath: legal-facil/client/dist
     envVars:
